@@ -19,10 +19,19 @@ const QuestionCard: React.FC<Props> = ({questions,questionNumber, question, setQ
 }) => {
   console.log("questions:",questions);
   const [ selectedOption, setSelectedOption] = useState<string>("");
-
   const handleOptionSelection = (event: React.MouseEvent<HTMLButtonElement>) : void =>{
     setSelectedOption(event.currentTarget.name)
   }
+
+  // useEffect(()=>{
+  //   if(timer > 0){
+  //     setTimeout(()=>{
+  //       setTimer(timer - 1);
+  //     },1000)
+  //   }
+  //   console.log("timer:",timer)
+  // },[timer])
+
   useEffect(()=>{
     setQuestionNumber((prev)=>prev+1);
     if(questions.length){

@@ -36,7 +36,6 @@ const QuestionCard: React.FC<Props> = ({questions,questionNumber, question, setQ
 
   return (
     <>
-      
       <QuestionWrapper>
         {question}
       </QuestionWrapper>

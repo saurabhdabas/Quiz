@@ -1,27 +1,21 @@
-import React,{MouseEventHandler, useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import { QuestionWrapper, ButtonWrapper } from './QuestionCard.styles'
 import IQuestion from '../interfaces/IQuestion';
-// export type AnswerObject = {
-//   question: string
-//   answer: string
-//   correct: boolean
-//   correctAnswer: string
-// }
+
 type Props = {
   questions: IQuestion[],
   question:string,
   questionNumber:number,
-  setQuestion:React.Dispatch<React.SetStateAction<string>>
+  setQuestionNumber:React.Dispatch<React.SetStateAction<number>>,
+  setQuestion:React.Dispatch<React.SetStateAction<string>>,
+  answer:string,
   answers:string[],
+  setAnswer:React.Dispatch<React.SetStateAction<string>>,
   setAnswers:React.Dispatch<React.SetStateAction<string[]>>
-  // callback: (e: React.MouseEvent<HTMLButtonElement>) => void
-  // userAnswer: AnswerObject | undefined
-  // questionNr: number
-  // totalQuestions: number
 }
 
 
-const QuestionCard: React.FC<Props> = ({questions,questionNumber, question, setQuestion, answers, setAnswers
+const QuestionCard: React.FC<Props> = ({questions,questionNumber, question, setQuestion, answer,answers,setAnswer, setAnswers,setQuestionNumber
 }) => {
   console.log("questions:",questions);
   const [ selectedOption, setSelectedOption] = useState<string>("");
@@ -29,9 +23,20 @@ const QuestionCard: React.FC<Props> = ({questions,questionNumber, question, setQ
   const handleOptionSelection = (event: React.MouseEvent<HTMLButtonElement>) : void =>{
     setSelectedOption(event.currentTarget.name)
   }
+  useEffect(()=>{
+    setQuestionNumber((prev)=>prev+1);
+    if(questions.length){
+      if(selectedOption === answer){
+        setAnswer(questions[questionNumber].correct_answer)
+        setQuestion(questions[questionNumber].question);
+        setAnswers(questions[questionNumber].answers);
+      }
+    }
+  },[selectedOption])
 
   return (
     <>
+      
       <QuestionWrapper>
         {question}
       </QuestionWrapper>

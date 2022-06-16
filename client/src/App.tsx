@@ -3,7 +3,7 @@ import React, {useState,useEffect} from 'react';
 import  { Wrapper }  from './App.styles';
 import QuestionCard from './components/QuestionCard';
 import IQuestion from './interfaces/IQuestion';
-import IAnswer from './interfaces/IAnswer';
+
 
 const App: React.FC= () => {
 

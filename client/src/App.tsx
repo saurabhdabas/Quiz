@@ -3,13 +3,14 @@ import React, {useState,useEffect} from 'react';
 import  { Wrapper }  from './App.styles';
 import QuestionCard from './components/QuestionCard';
 import IQuestion from './interfaces/IQuestion';
-
+import IAnswer from './interfaces/IAnswer';
 
 const App: React.FC= () => {
 
   const [ question , setQuestion] = useState<string>("");
   const [questions, setQuestions] = useState<IQuestion[]>([])
   const [ questionNumber, setQuestionNumber] = useState<number>(0);
+  const [ answer, setAnswer] = useState<string>("");
   const [answers, setAnswers] = useState<string[]>([]);
 
   useEffect(()=>{
@@ -17,12 +18,13 @@ const App: React.FC= () => {
     .then((response)=>{
       setQuestions(response.data)
       setQuestion(response.data[questionNumber].question)
-      setAnswers([...response.data[questionNumber].incorrect_answers,response.data[questionNumber].correct_answer])
+      setAnswer(response.data[questionNumber].correct_answer)
+      setAnswers(response.data[questionNumber].answers)
     })
   },[])
   return (
     <Wrapper>
-      <QuestionCard questions ={questions} questionNumber={questionNumber} question={question} setQuestion={setQuestion} answers={answers} setAnswers={setAnswers}/>
+      <QuestionCard questions ={questions} questionNumber={questionNumber} question={question} setQuestion={setQuestion} answer={answer} setAnswer={setAnswer} answers={answers} setAnswers={setAnswers} setQuestionNumber={setQuestionNumber}/>
     </Wrapper>
   );
 }

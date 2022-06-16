@@ -10,12 +10,8 @@ export const QuestionWrapper = styled.div`
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
   font-family: 'DM Sans', sans-serif;
   text-align: center;
-  font-size:26px;
+  font-size:20px;
 `
-// type ButtonWrapperProps = {
-//   correct: boolean;
-//   userClicked: boolean;
-// }
 
 export const ButtonWrapper = styled.div`
   transition: all 0.3s ease;

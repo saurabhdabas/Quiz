@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, {useState,useEffect} from 'react';
-import  { Wrapper }  from './App.styles';
 import QuestionCard from './components/QuestionCard';
 import IQuestion from './interfaces/IQuestion';
 
@@ -23,9 +22,9 @@ const App: React.FC= () => {
     })
   },[])
   return (
-    <Wrapper>
+    <>
       <QuestionCard questions ={questions} questionNumber={questionNumber} question={question} setQuestion={setQuestion} answer={answer} setAnswer={setAnswer} answers={answers} setAnswers={setAnswers} setQuestionNumber={setQuestionNumber}/>
-    </Wrapper>
+    </>
   );
 }
 

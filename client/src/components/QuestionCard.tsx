@@ -24,12 +24,14 @@ const QuestionCard: React.FC<Props> = ({timer,setTimer,questions,questionNumber,
   const handleOptionSelection = (event: React.MouseEvent<HTMLButtonElement>) : void =>{
     setSelectedOption(event.currentTarget.name)
   }
-  console.log("answer:",answer);
+
+  const [time, setTimedOut] = useState(true);
 
   useEffect(()=>{
+    setQuestionNumber((prev)=>prev+1);
     if(questions.length){
-      setQuestionNumber((prev)=>prev+1);
-      if(selectedOption === answer){
+      
+      if(selectedOption === answer && time){
         setTimer(30);
         setAnswer(questions[questionNumber].correct_answer)
         setQuestion(questions[questionNumber].question);
@@ -40,13 +42,13 @@ const QuestionCard: React.FC<Props> = ({timer,setTimer,questions,questionNumber,
 
   useEffect(() => {
     const interval = setInterval(() => {
+      if(timer === 0) setTimedOut(false);
       if(timer > 0){
         setTimer((prev) => prev - 1);
       }
       }, 1000)
     return () => clearInterval(interval);
   }, [timer]);
-
 
   return (
     <>

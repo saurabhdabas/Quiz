@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, {useState,useEffect} from 'react';
 import QuestionCard from './components/QuestionCard';
 import IQuestion from './interfaces/IQuestion';
-
+import { shuffleArray } from './utils/shuffleArray';
 
 const App: React.FC= () => {
 
@@ -20,10 +20,10 @@ const App: React.FC= () => {
       setQuestions(response.data)
       setQuestion(response.data[questionNumber].question)
       setAnswer(response.data[questionNumber].correctAnswer)
-      setAnswers(response.data[questionNumber].answers)
+      setAnswers(shuffleArray(response.data[questionNumber].answers))
     })
   },[])
-  console.log("Questions:",questions);
+  
   return (
     <>
       <QuestionCard timer={timer} setTimer={setTimer} questions ={questions} questionNumber={questionNumber} question={question} setQuestion={setQuestion} answer={answer} setAnswer={setAnswer} answers={answers} setAnswers={setAnswers} setQuestionNumber={setQuestionNumber}/>

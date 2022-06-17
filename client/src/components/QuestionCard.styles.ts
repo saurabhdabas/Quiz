@@ -1,9 +1,14 @@
 import styled from 'styled-components';
 
+export const QuestionCardWrapper = styled.div`
+display:flex;
+height:725px;
+flex-direction:column;
+align-items:center;
+justify-content:space-between;
+`
 export const QuestionWrapper = styled.div`
-  display:flex;
-  align-items:center;
-  justify-content:center;
+
   width: 900px;
   height:50px;
   color:#FFF;
@@ -20,10 +25,8 @@ export const QuestionWrapper = styled.div`
 
 export const ButtonWrapper = styled.div`
   transition: all 0.3s ease;
-
-  margin-top:50px;
   display: grid;
-  width: 900px;
+  width: 950px;
   justify-items: center;
   grid-column-gap: 40px;
   grid-row-gap: 35px;
@@ -37,7 +40,7 @@ export const ButtonWrapper = styled.div`
     font-size: 0.8rem;
     width: 450px;
     height:110px;
-    margin: 5px 0;
+    margin:0;
     background-color: #6949FD;
     // background-image: url("https://img.freepik.com/free-photo/crumpled-yellow-paper-background-close-up_60487-2390.jpg?size=626&ext=jpg");
     border: 3px solid #ffffff;
@@ -49,7 +52,8 @@ export const ButtonWrapper = styled.div`
     text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.25);
 
     &:hover {
-      background-color: #FAB02B; // <Thing> when hovered
+      // background-color: #FAB02B; 
+      background-image: url("https://img.freepik.com/free-photo/crumpled-yellow-paper-background-close-up_60487-2390.jpg?size=626&ext=jpg");
     }
   }
 

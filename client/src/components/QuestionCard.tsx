@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react';
-import { QuestionWrapper, ButtonWrapper } from './QuestionCard.styles'
+import { QuestionWrapper, ButtonWrapper, QuestionCardWrapper } from './QuestionCard.styles'
 import IQuestion from '../interfaces/IQuestion';
 import { TimerDesign } from './timer.styles';
 import {shuffleArray} from '../utils/shuffleArray';
@@ -63,7 +63,7 @@ const QuestionCard: React.FC<Props> = ({timer,setTimer,questions,questionNumber,
   }, [timer]);
 
   return (
-    <>
+    <QuestionCardWrapper>
       <TimerDesign>{timer}</TimerDesign>
       <QuestionWrapper>
         {question}
@@ -78,7 +78,7 @@ const QuestionCard: React.FC<Props> = ({timer,setTimer,questions,questionNumber,
           );
         })}
       </ButtonWrapper>
-    </>
+    </QuestionCardWrapper>
   )
 }
 

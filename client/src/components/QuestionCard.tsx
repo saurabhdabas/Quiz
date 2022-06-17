@@ -33,7 +33,7 @@ const QuestionCard: React.FC<Props> = ({timer,setTimer,questions,questionNumber,
       
       if(selectedOption === answer && time){
         setTimer(30);
-        setAnswer(questions[questionNumber].correct_answer)
+        setAnswer(questions[questionNumber].correctAnswer)
         setQuestion(questions[questionNumber].question);
         setAnswers(questions[questionNumber].answers);
       }

@@ -40,8 +40,10 @@ const QuestionCard: React.FC<Props> = ({timer,setTimer,questions,questionNumber,
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setTimer((prev) => prev - 1);
-    }, 1000);
+      if(timer > 0){
+        setTimer((prev) => prev - 1);
+      }
+      }, 1000)
     return () => clearInterval(interval);
   }, [timer]);
 

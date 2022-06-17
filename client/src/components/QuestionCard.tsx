@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react';
 import { QuestionWrapper, ButtonWrapper } from './QuestionCard.styles'
 import IQuestion from '../interfaces/IQuestion';
 import { TimerDesign } from './timer.styles';
+import {shuffleArray} from '../utils/shuffleArray';
 
 type Props = {
   timer:number,
@@ -23,19 +24,30 @@ const QuestionCard: React.FC<Props> = ({timer,setTimer,questions,questionNumber,
   const [ selectedOption, setSelectedOption] = useState<string>("");
   const handleOptionSelection = (event: React.MouseEvent<HTMLButtonElement>) : void =>{
     setSelectedOption(event.currentTarget.name)
+    
   }
 
   const [time, setTimedOut] = useState(true);
+  const [className, setClassName] = useState("");
 
   useEffect(()=>{
+    
     setQuestionNumber((prev)=>prev+1);
     if(questions.length){
-      
+      // setClassName("correct");
       if(selectedOption === answer && time){
+        setClassName("correct");
         setTimer(30);
-        setAnswer(questions[questionNumber].correctAnswer)
-        setQuestion(questions[questionNumber].question);
-        setAnswers(questions[questionNumber].answers);
+        setTimeout(()=>{
+          setAnswer(questions[questionNumber].correctAnswer);
+          setQuestion(questions[questionNumber].question);
+          setAnswers(shuffleArray(questions[questionNumber].answers));
+        },3000)
+      } else {
+        setClassName("wrong");
+        console.log("className:",className);
+        setTimer(0);
+        setTimedOut(false);
       }
     }
   },[selectedOption])
@@ -60,7 +72,9 @@ const QuestionCard: React.FC<Props> = ({timer,setTimer,questions,questionNumber,
       >
         {answers.map((option)=>{
           return (
-            <button name={option} onClick={handleOptionSelection}>{option}</button>
+            <button className={ selectedOption === option ? className : ""} name={option} onClick={handleOptionSelection}>
+              {option}
+            </button>
           );
         })}
       </ButtonWrapper>

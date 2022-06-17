@@ -1,7 +1,7 @@
 export default interface IQuestion {
   questionNumber:number,
   question : string,
-  correct_answer : string,
-  incorrect_answers: string[],
+  correctAnswer : string,
+  incorrectAnswers: string[],
   answers :string[]
 }

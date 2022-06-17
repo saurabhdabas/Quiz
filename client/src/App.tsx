@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, {useState,useEffect} from 'react';
 import QuestionCard from './components/QuestionCard';
 import IQuestion from './interfaces/IQuestion';
-import Timer from './components/Timer';
+
 
 const App: React.FC= () => {
 
@@ -25,8 +25,7 @@ const App: React.FC= () => {
   },[])
   return (
     <>
-      <Timer timer={timer} setTimer={setTimer}/>
-      <QuestionCard questions ={questions} questionNumber={questionNumber} question={question} setQuestion={setQuestion} answer={answer} setAnswer={setAnswer} answers={answers} setAnswers={setAnswers} setQuestionNumber={setQuestionNumber}/>
+      <QuestionCard timer={timer} setTimer={setTimer} questions ={questions} questionNumber={questionNumber} question={question} setQuestion={setQuestion} answer={answer} setAnswer={setAnswer} answers={answers} setAnswers={setAnswers} setQuestionNumber={setQuestionNumber}/>
     </>
   );
 }

@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 
 export const QuestionWrapper = styled.div`
+  display:flex;
+  align-items:center;
+  justify-content:center;
   width: 900px;
-  height:30px;
+  height:50px;
   color:#FFF;
   background-color: #6949FD;
   // background-image: url("https://img.freepik.com/free-photo/crumpled-yellow-paper-background-close-up_60487-2390.jpg?size=626&ext=jpg");

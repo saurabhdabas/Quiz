@@ -19,10 +19,11 @@ const App: React.FC= () => {
     .then((response)=>{
       setQuestions(response.data)
       setQuestion(response.data[questionNumber].question)
-      setAnswer(response.data[questionNumber].correct_answer)
+      setAnswer(response.data[questionNumber].correctAnswer)
       setAnswers(response.data[questionNumber].answers)
     })
   },[])
+  console.log("Questions:",questions);
   return (
     <>
       <QuestionCard timer={timer} setTimer={setTimer} questions ={questions} questionNumber={questionNumber} question={question} setQuestion={setQuestion} answer={answer} setAnswer={setAnswer} answers={answers} setAnswers={setAnswers} setQuestionNumber={setQuestionNumber}/>

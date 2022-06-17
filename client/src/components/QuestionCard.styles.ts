@@ -29,14 +29,14 @@ export const ButtonWrapper = styled.div`
   grid-row-gap: 35px;
   grid-template-columns: repeat(2,1fr);
   grid-template-rows: repeat(2,1fr);
-
+  
 
   button {
     cursor: pointer;
     user-select: none;
     font-size: 0.8rem;
     width: 450px;
-    height:60px;
+    height:110px;
     margin: 5px 0;
     background-color: #6949FD;
     // background-image: url("https://img.freepik.com/free-photo/crumpled-yellow-paper-background-close-up_60487-2390.jpg?size=626&ext=jpg");
@@ -47,5 +47,17 @@ export const ButtonWrapper = styled.div`
     font-family: 'DM Sans', sans-serif;
     color: #FFF;
     text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.25);
+
+    &:hover {
+      background-color: #FAB02B; // <Thing> when hovered
+    }
   }
+
+  .correct {
+    background-color:#35E9BC
+  }
+  .wrong {
+    background-color:#DC3545
+  }
+ 
 `

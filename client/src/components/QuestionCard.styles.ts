@@ -41,7 +41,6 @@ export const ButtonWrapper = styled.div`
     width: 450px;
     height:110px;
     margin:0;
-    // background-color: #6949FD;
     background-image: url("https://img.freepik.com/free-photo/crumpled-blue-paper-textured-background_53876-101379.jpg?size=626&ext=jpg&ga=GA1.2.698873982.1653386653");
     border: 3px solid #ffffff;
     box-shadow: 1px 2px 0px rgba(0, 0, 0, 0.1);

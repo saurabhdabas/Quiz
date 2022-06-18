@@ -1,13 +1,17 @@
 import React,{useState,useEffect} from 'react';
 import useSound from 'use-sound';
 import { QuestionWrapper, ButtonWrapper, QuestionCardWrapper } from './QuestionCard.styles'
+import { StartBtnWrapper } from './StartBtnWrapper.styles';
 import IQuestion from '../interfaces/IQuestion';
 
 import { TimerDesign } from './timer.styles';
 import {shuffleArray} from '../utils/shuffleArray';
+
 const timersound = require('../sounds/timersound.mp3');
 
 type Props = {
+  start:boolean,
+  setStart:React.Dispatch<React.SetStateAction<boolean>>,
   timer:number,
   setTimer:React.Dispatch<React.SetStateAction<number>>,
   questions: IQuestion[],
@@ -21,7 +25,7 @@ type Props = {
   setAnswers:React.Dispatch<React.SetStateAction<string[]>>
 }
 
-const QuestionCard: React.FC<Props> = ({timer,setTimer,questions,questionNumber, question, setQuestion, answer,answers,setAnswer, setAnswers,setQuestionNumber
+const QuestionCard: React.FC<Props> = ({start,setStart,timer,setTimer,questions,questionNumber, question, setQuestion, answer,answers,setAnswer, setAnswers,setQuestionNumber
 }) => {
   const [ selectedOption, setSelectedOption] = useState<string>("");
   const handleOptionSelection = (event: React.MouseEvent<HTMLButtonElement>) : void =>{
@@ -33,6 +37,11 @@ const QuestionCard: React.FC<Props> = ({timer,setTimer,questions,questionNumber,
   const [className, setClassName] = useState<string>("");
   const [play, { stop }] = useSound<any>(timersound);
   
+  const handleStart = (event: React.MouseEvent<HTMLButtonElement>) : void => {
+    setStart(true);
+  }
+
+
   useEffect(()=>{
 
     if(questions.length){
@@ -62,22 +71,30 @@ const QuestionCard: React.FC<Props> = ({timer,setTimer,questions,questionNumber,
   },[selectedOption])
 
   useEffect(() => {
-    
-    const interval = setInterval(() => {
+    console.log("start:",start);
+    if(start){
       
-      if(timer === 0) setTimedOut(false);
-      if(timer > 0){
-        
-        setTimer((prev) => prev - 1);
-      }
-      }, 1000)
-    return () => clearInterval(interval);
-  }, [timer]);
+      const interval = setInterval(() => {
+      
+        if(timer === 0) setTimedOut(false);
+        if(timer > 0){
+          
+          setTimer((prev) => prev - 1);
+        }
+        }, 1000)
+      return () => clearInterval(interval);
+    }
+  }, [timer,start]);
 
   return (
     <QuestionCardWrapper>
-      <div style={{display:'flex',alignItems:'center',justifyContent:'center',backgroundImage:"url('./clock.png')",width:"100px",height:"102px",backgroundSize: "97px 99px",backgroundRepeat:"no-repeat",margin:'0 auto'}}><TimerDesign>{timer}</TimerDesign></div>
-  
+      <StartBtnWrapper>
+        <button onClick={handleStart}>Start</button>
+        <div style={{display:'flex',alignItems:'center',justifyContent:'center',backgroundImage:"url('./clock.png')",width:"100px",height:"102px",backgroundSize: "97px 99px",backgroundRepeat:"no-repeat"}}>
+          <TimerDesign>{timer}</TimerDesign>
+        </div>
+      </StartBtnWrapper>
+
       <QuestionWrapper>
         {question}
       </QuestionWrapper>

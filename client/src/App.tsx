@@ -40,19 +40,21 @@ const App: React.FC= () => {
   useEffect(()=>{
     axios.get("http://localhost:8080/quiz")
     .then((response)=>{
-      setQuestions(response.data)
-      setQuestion(response.data[questionNumber].question)
-      setAnswer(response.data[questionNumber].correctAnswer)
-      setAnswers(shuffleArray(response.data[questionNumber].answers))
+      setTimeout(()=>{
+        setEarned("$ 0")
+        setQuestionNumber((prev)=>prev+1);
+        setQuestions(response.data)
+        setQuestion(response.data[questionNumber].question)
+        setAnswer(response.data[questionNumber].correctAnswer)
+        setAnswers(shuffleArray(response.data[questionNumber].answers))
+      },3)
     })
-  },[])
-  
-  let money = (moneyGrid.find((item)=>item.id === questionNumber-1))?.amount as string;
-  
+  },[]) 
   useEffect(() => {
+    
     if(questionNumber > 1){
       
-      setEarned(money);
+      setEarned((moneyGrid.find((item)=>item.id === questionNumber-1))?.amount as string);
     }
   }, [questionNumber]);
   

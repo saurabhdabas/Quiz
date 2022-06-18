@@ -31,18 +31,15 @@ const QuestionCard: React.FC<Props> = ({timer,setTimer,questions,questionNumber,
   const [time, setTimedOut] = useState<boolean>(true);
   
   const [className, setClassName] = useState<string>("");
-  const [play, { stop }] = useSound(timersound);
-  const [ isPlaying, setIsPlaying] = useState<boolean>(false);
-
-  
+  const [play, { stop }] = useSound<any>(timersound);
   
   useEffect(()=>{
 
     if(questions.length){
-      
+      stop();
       if(selectedOption === answer && time){
         setClassName("correct");
-    
+        
         setTimeout(()=>{
           setTimer(30);
           setQuestionNumber((prev)=>prev+1);
@@ -53,11 +50,12 @@ const QuestionCard: React.FC<Props> = ({timer,setTimer,questions,questionNumber,
         },3000)
       } 
       else {
-        setTimedOut(false);
+
         setClassName("wrong");
+        setTimer(0);
         setTimeout(()=>{
           stop();
-          setTimer(0);
+          setTimedOut(false);
         },3000)
       }
     }
@@ -78,7 +76,8 @@ const QuestionCard: React.FC<Props> = ({timer,setTimer,questions,questionNumber,
 
   return (
     <QuestionCardWrapper>
-      <TimerDesign>{timer}</TimerDesign>
+      <div style={{display:'flex',alignItems:'center',justifyContent:'center',backgroundImage:"url('./clock.png')",width:"100px",height:"102px",backgroundSize: "97px 99px",backgroundRepeat:"no-repeat",margin:'0 auto'}}><TimerDesign>{timer}</TimerDesign></div>
+  
       <QuestionWrapper>
         {question}
       </QuestionWrapper>

@@ -62,11 +62,14 @@ const App: React.FC= () => {
   }, [questionNumber]);
   
   return (
+    <>
+    <div style={{margin:"5px 0 20px 75px"}}><img src="./logo.jpg" alt="logo" height="100px" width="500px"/></div>
     <MainWrapper>
       <AmountCard><div>Total Won  {earned}</div></AmountCard>
       <QuestionCard timer={timer} setTimer={setTimer} questions ={questions} questionNumber={questionNumber} question={question} setQuestion={setQuestion} answer={answer} setAnswer={setAnswer} answers={answers} setAnswers={setAnswers} setQuestionNumber={setQuestionNumber}/>
       <MoneyGrid grid={moneyGrid} questionNumber={questionNumber}/>
     </MainWrapper>
+    </>
   );
 }
 

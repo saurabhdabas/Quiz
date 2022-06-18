@@ -31,11 +31,16 @@ const QuestionCard: React.FC<Props> = ({timer,setTimer,questions,questionNumber,
   const [className, setClassName] = useState("");
 
   useEffect(()=>{
+    setTimeout(()=>{
+      setQuestionNumber(1);
+    },500)
     
-    setQuestionNumber((prev)=>prev+1);
     if(questions.length){
       
       if(selectedOption === answer && time){
+        setTimeout(() => {
+          setQuestionNumber((prev)=>prev+1);
+        },3000);
         setClassName("correct");
         setTimer(30);
         setTimeout(()=>{

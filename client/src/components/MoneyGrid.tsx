@@ -17,7 +17,7 @@ const MoneyGrid: React.FC<Props> = ({grid,questionNumber}) => {
               className={
                 questionNumber === item.id
                   ? "active"
-                  : "regular"
+                  : ""
               }>
               <span>{item.id}</span>
               <span>{item.amount}</span>

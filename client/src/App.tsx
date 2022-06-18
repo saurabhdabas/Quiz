@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, {useState,useEffect} from 'react';
 import { MainWrapper } from './components/App.styles';
-
+import { AmountCard } from './components/AmountCard.styles';
 import MoneyGrid from './components/MoneyGrid';
 import QuestionCard from './components/QuestionCard';
 import IMoney from './interfaces/IMoney';
@@ -58,7 +58,7 @@ const App: React.FC= () => {
   
   return (
     <MainWrapper>
-      <div>{earned}</div>
+      <AmountCard><div>Total Won  {earned}</div></AmountCard>
       <QuestionCard timer={timer} setTimer={setTimer} questions ={questions} questionNumber={questionNumber} question={question} setQuestion={setQuestion} answer={answer} setAnswer={setAnswer} answers={answers} setAnswers={setAnswers} setQuestionNumber={setQuestionNumber}/>
       <MoneyGrid grid={moneyGrid} questionNumber={questionNumber}/>
     </MainWrapper>

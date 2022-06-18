@@ -39,6 +39,7 @@ const QuestionCard: React.FC<Props> = ({start,setStart,timer,setTimer,questions,
   
   const handleStart = (event: React.MouseEvent<HTMLButtonElement>) : void => {
     setStart(true);
+    play();
   }
 
 

@@ -15,8 +15,9 @@ const App: React.FC= () => {
   const [ questionNumber, setQuestionNumber] = useState<number>(0);
   const [ answer, setAnswer] = useState<string>("");
   const [answers, setAnswers] = useState<string[]>([]);
-
+  const [earned,setEarned] = useState<string>("$ 0");
   const [timer,setTimer] = useState<number>(30);
+  
   
   const moneyGrid :IMoney[]= [
     { id: 1, amount: "$ 100" },
@@ -46,10 +47,19 @@ const App: React.FC= () => {
     })
   },[])
   
+  let money = (moneyGrid.find((item)=>item.id === questionNumber-1))?.amount as string;
+  
+  useEffect(() => {
+    if(questionNumber > 1){
+      
+      setEarned(money);
+    }
+  }, [questionNumber]);
+  
   return (
     <MainWrapper>
+      <div>{earned}</div>
       <QuestionCard timer={timer} setTimer={setTimer} questions ={questions} questionNumber={questionNumber} question={question} setQuestion={setQuestion} answer={answer} setAnswer={setAnswer} answers={answers} setAnswers={setAnswers} setQuestionNumber={setQuestionNumber}/>
-
       <MoneyGrid grid={moneyGrid} questionNumber={questionNumber}/>
     </MainWrapper>
   );

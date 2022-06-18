@@ -34,7 +34,7 @@ const QuestionCard: React.FC<Props> = ({timer,setTimer,questions,questionNumber,
     
     setQuestionNumber((prev)=>prev+1);
     if(questions.length){
-      // setClassName("correct");
+      
       if(selectedOption === answer && time){
         setClassName("correct");
         setTimer(30);
@@ -45,7 +45,7 @@ const QuestionCard: React.FC<Props> = ({timer,setTimer,questions,questionNumber,
         },3000)
       } else {
         setClassName("wrong");
-        console.log("className:",className);
+        
         setTimer(0);
         setTimedOut(false);
       }

@@ -3,17 +3,25 @@ import { Grid } from './MoneyGrid.styles';
 import IMoney from '../interfaces/IMoney';
 type Props = {
   grid:IMoney[],
+  questionNumber:number
 }
 
-const MoneyGrid: React.FC<Props> = ({grid}) => {
+const MoneyGrid: React.FC<Props> = ({grid,questionNumber}) => {
   return (
     
     <div>
       {grid.map((item)=>{
         return (
           <Grid>
-            <span>{item.id}</span>
-            <span>{item.amount}</span>
+            <li
+              className={
+                questionNumber === item.id
+                  ? "active"
+                  : "regular"
+              }>
+              <span>{item.id}</span>
+              <span>{item.amount}</span>
+            </li>
           </Grid>
         );
       })}

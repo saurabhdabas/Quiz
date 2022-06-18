@@ -1,5 +1,6 @@
-import axios from 'axios';
 import React, {useState,useEffect} from 'react';
+import axios from 'axios';
+import useSound from 'use-sound';
 import { MainWrapper } from './components/App.styles';
 import { AmountCard } from './components/AmountCard.styles';
 import MoneyGrid from './components/MoneyGrid';
@@ -7,6 +8,7 @@ import QuestionCard from './components/QuestionCard';
 import IMoney from './interfaces/IMoney';
 import IQuestion from './interfaces/IQuestion';
 import { shuffleArray } from './utils/shuffleArray';
+const timersound = require('./sounds/timersound.mp3');
 
 const App: React.FC= () => {
 
@@ -17,7 +19,7 @@ const App: React.FC= () => {
   const [answers, setAnswers] = useState<string[]>([]);
   const [earned,setEarned] = useState<string>("$ 0");
   const [timer,setTimer] = useState<number>(30);
-  
+  const [play] = useSound(timersound);
   
   const moneyGrid :IMoney[]= [
     { id: 1, amount: "$ 100" },
@@ -38,6 +40,7 @@ const App: React.FC= () => {
   ].reverse();
 
   useEffect(()=>{
+    
     axios.get("http://localhost:8080/quiz")
     .then((response)=>{
       setTimeout(()=>{

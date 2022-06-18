@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react';
 import useSound from 'use-sound';
 import { QuestionWrapper, ButtonWrapper, QuestionCardWrapper } from './QuestionCard.styles'
 import IQuestion from '../interfaces/IQuestion';
-import IMoney from '../interfaces/IMoney';
+
 import { TimerDesign } from './timer.styles';
 import {shuffleArray} from '../utils/shuffleArray';
 const timersound = require('../sounds/timersound.mp3');
@@ -21,21 +21,17 @@ type Props = {
   setAnswers:React.Dispatch<React.SetStateAction<string[]>>
 }
 
-
-
-
 const QuestionCard: React.FC<Props> = ({timer,setTimer,questions,questionNumber, question, setQuestion, answer,answers,setAnswer, setAnswers,setQuestionNumber
 }) => {
   const [ selectedOption, setSelectedOption] = useState<string>("");
   const handleOptionSelection = (event: React.MouseEvent<HTMLButtonElement>) : void =>{
     setSelectedOption(event.currentTarget.name)
-    
   }
 
   const [time, setTimedOut] = useState<boolean>(true);
   
   const [className, setClassName] = useState<string>("");
-  const [play] = useSound(timersound);
+  const [play, { stop }] = useSound(timersound);
   const [ isPlaying, setIsPlaying] = useState<boolean>(false);
 
   
@@ -46,20 +42,23 @@ const QuestionCard: React.FC<Props> = ({timer,setTimer,questions,questionNumber,
       
       if(selectedOption === answer && time){
         setClassName("correct");
-        
-        
+    
         setTimeout(()=>{
           setTimer(30);
           setQuestionNumber((prev)=>prev+1);
           setAnswer(questions[questionNumber].correctAnswer);
           setQuestion(questions[questionNumber].question);
           setAnswers(shuffleArray(questions[questionNumber].answers));
+          play();
         },3000)
-      } else {
-        setClassName("wrong");
-        
-        setTimer(0);
+      } 
+      else {
         setTimedOut(false);
+        setClassName("wrong");
+        setTimeout(()=>{
+          stop();
+          setTimer(0);
+        },3000)
       }
     }
   },[selectedOption])

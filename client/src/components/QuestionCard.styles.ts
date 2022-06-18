@@ -58,12 +58,48 @@ export const ButtonWrapper = styled.div`
   }
   .correct {
     // background-color:#35E9BC;
+    animation: correct 3s ease forwards;
     background-image: url("https://img.freepik.com/free-vector/green-crumpled-paper-texture-sheet-background_1017-37527.jpg?w=2000&t=st=1655536173~exp=1655536773~hmac=4556f1db4dfb69a8e8ae4d3a51744365fa8e83d38d89ea2b26900d187e44d344");
   }
   .wrong {
+    animation: wrong 3s ease forwards;
     // background-color:#DC3545;
     background-image: url("https://img.freepik.com/free-photo/red-glued-paper-background_1409-1784.jpg?w=2000&t=st=1655536320~exp=1655536920~hmac=bdb4b84011b78eae88deab5c405e132ed726ef838540b5057dc70a87120d23a2");
   }
   
+  @keyframes correct {
+    0%,
+    22%,
+    42% {
+      background: black;
+    }
+    20%,
+    40%,
+    60% {
+      background: linear-gradient(90deg, rgba(66,189,1,1) 0%, rgba(220,53,69,1) 71%);
+    }
+    62%,
+    100% {
+      background: #42BD01;
+    }
+  }
+  
+  
+  @keyframes wrong {
+    0%,
+    22%,
+    42% {
+      background: black;
+    }
+    20%,
+    40%,
+    60% {
+      background: linear-gradient(90deg, rgba(66,189,1,1) 0%, rgba(220,53,69,1) 71%);
+    }
+    62%,
+    100% {
+      background: #DC3545;
+    }
+  }
  
 `

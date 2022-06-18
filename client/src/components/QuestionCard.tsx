@@ -7,6 +7,7 @@ import IQuestion from '../interfaces/IQuestion';
 import { TimerDesign } from './timer.styles';
 import {shuffleArray} from '../utils/shuffleArray';
 
+
 const timersound = require('../sounds/timersound.mp3');
 
 type Props = {
@@ -42,9 +43,17 @@ const QuestionCard: React.FC<Props> = ({start,setStart,timer,setTimer,questions,
     play();
   }
 
+  const handleRestart = (event: React.MouseEvent<HTMLButtonElement>) : void => {
+    setQuestionNumber((prev)=>prev+1);
+    stop();
+    setTimer(30);
+    setStart(false);
+  }
+
+
 
   useEffect(()=>{
-
+    
     if(questions.length){
       stop();
       if(selectedOption === answer && time){
@@ -60,13 +69,15 @@ const QuestionCard: React.FC<Props> = ({start,setStart,timer,setTimer,questions,
         },3000)
       } 
       else {
-
+        console.log("selectedOption:",selectedOption);
+        console.log("answer:",answer);
         setClassName("wrong");
         setTimer(0);
         setTimeout(()=>{
           stop();
           setTimedOut(false);
         },3000)
+        setStart(false);
       }
     }
   },[selectedOption])
@@ -90,7 +101,7 @@ const QuestionCard: React.FC<Props> = ({start,setStart,timer,setTimer,questions,
   return (
     <QuestionCardWrapper>
       <StartBtnWrapper>
-        <button onClick={handleStart}>Start</button>
+        <button onClick={handleStart}>{"Start"}</button>
         <div style={{display:'flex',alignItems:'center',justifyContent:'center',backgroundImage:"url('./clock.png')",width:"100px",height:"102px",backgroundSize: "97px 99px",backgroundRepeat:"no-repeat"}}>
           <TimerDesign>{timer}</TimerDesign>
         </div>

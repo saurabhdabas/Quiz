@@ -64,7 +64,7 @@ const App: React.FC= () => {
   
   return (
     <>
-    <div style={{margin:"5px 0 20px 75px"}}><img src="./logo.jpg" alt="logo" height="100px" width="500px"/></div>
+    <div style={{paddingLeft:'70px'}}><img src="./logo.png" alt="logo" height="120px" width="10%"/></div>
     <MainWrapper>
       <AmountCard><div>Total Won  {earned}</div></AmountCard>
       <QuestionCard timer={timer} start={start} setStart={setStart} setTimer={setTimer} questions ={questions} questionNumber={questionNumber} question={question} setQuestion={setQuestion} answer={answer} setAnswer={setAnswer} answers={answers} setAnswers={setAnswers} setQuestionNumber={setQuestionNumber}/>

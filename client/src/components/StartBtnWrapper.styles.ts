@@ -3,7 +3,9 @@ import styled from 'styled-components';
 export const StartBtnWrapper = styled.div`
 display: flex;
 width: 100%;
-align-items: center;
+height:150px;
+margin:75px 0;
+align-items: start;
 justify-content: space-between;
 
 > button {

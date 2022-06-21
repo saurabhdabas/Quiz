@@ -4,7 +4,7 @@ export const AmountCard = styled.div`
   position:absolute;
 > div {
   position:relative;
-  top:-200px;
+  top:-100px;
   right:565px;
   display:flex;
   align-items:center;

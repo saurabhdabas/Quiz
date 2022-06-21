@@ -102,9 +102,9 @@ const QuestionCard: React.FC<Props> = ({start,setStart,timer,setTimer,questions,
     <QuestionCardWrapper>
       <StartBtnWrapper>
         <button onClick={handleStart}>{"Start"}</button>
-        <div style={{display:'flex',alignItems:'center',justifyContent:'center',backgroundImage:"url('./clock.png')",width:"100px",height:"102px",backgroundSize: "97px 99px",backgroundRepeat:"no-repeat"}}>
+        {/* <div style={{display:'flex',alignItems:'center',justifyContent:'center',backgroundImage:"url('./clock.png')",width:"100px",height:"102px",backgroundSize: "97px 99px",backgroundRepeat:"no-repeat"}}> */}
           <TimerDesign>{timer}</TimerDesign>
-        </div>
+        {/* </div> */}
       </StartBtnWrapper>
 
       <QuestionWrapper>

@@ -6,7 +6,7 @@ import IQuestion from '../interfaces/IQuestion';
 
 import { TimerDesign } from './timer.styles';
 import {shuffleArray} from '../utils/shuffleArray';
-
+import { ThreeDots } from 'react-loader-spinner';
 
 const timersound = require('../sounds/timersound.mp3');
 
@@ -105,9 +105,11 @@ const QuestionCard: React.FC<Props> = ({start,setStart,timer,setTimer,questions,
           <TimerDesign>{timer}</TimerDesign>
       </StartBtnWrapper>
 
+      {question ? 
       <QuestionWrapper>
         {question}
-      </QuestionWrapper>
+      </QuestionWrapper> : <ThreeDots  height={250} width={250} /> }
+
       <ButtonWrapper
       >
         {answers.map((option)=>{

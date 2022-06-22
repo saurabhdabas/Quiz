@@ -9,7 +9,7 @@ This a Typescript based Quiz Application made on the pattern of Who wants to be 
   - User can collect money based on number of correct answers.
 
 ## Project In Action
-- User can click on start button, 30 Sec Timer starts ticking. Also user can choose answers<br />
+- User can click on start button, 30 Sec Timer starts ticking with sound Effects. Also user can choose answers<br />
 ![""](https://raw.githubusercontent.com/saurabhdabas/WhoWantsToBeMillionarie-Built-in-Typescript/c417fbe4e53f7011bcce022ea73ec25954463045/client/docs/quiz.gif)
 
 ## Getting Started 

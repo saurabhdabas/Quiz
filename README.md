@@ -3,6 +3,10 @@
 ## Overview
 This a Typescript based Quiz Application made on the pattern of Who wants to be millionaire.
 
+## Tech Stack
+  - Front-End: Typescript, Axios, Styled-Components
+  - Back-End: Node.js, Express
+
 ## User Stories
   - User can start a quiz.
   - User can choose answers.

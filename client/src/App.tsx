@@ -64,9 +64,9 @@ const App: React.FC= () => {
   
   return (
     <>
-    <div style={{paddingLeft:'70px'}}><img src="./logo.png" alt="logo" height="120px" width="10%"/></div>
+    <div style={{paddingLeft:'70px'}}><img src="/logo.png" alt="logo" height="120px" width="10%"/></div>
     <MainWrapper>
-      <AmountCard><div><img src="./money-bag.png" alt="logo" height="50px"/>Total Won<span>{earned}</span></div></AmountCard>
+      <AmountCard><div><img src="/money-bag.png" alt="logo" height="50px"/>Total Won<span>{earned}</span></div></AmountCard>
       <QuestionCard timer={timer} start={start} setStart={setStart} setTimer={setTimer} questions ={questions} questionNumber={questionNumber} question={question} setQuestion={setQuestion} answer={answer} setAnswer={setAnswer} answers={answers} setAnswers={setAnswers} setQuestionNumber={setQuestionNumber}/>
       <MoneyGrid grid={moneyGrid} questionNumber={questionNumber}/>
     </MainWrapper>
